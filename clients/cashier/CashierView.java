@@ -9,6 +9,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.Observable;
 import java.util.Observer;
+import clients.ButtonSound;
 
 
 /**
@@ -66,6 +67,7 @@ public class CashierView implements Observer
     theBtCheck.addActionListener(                   // Call back code
       e -> cont.doCheck( theInput.getText() ) );
     cp.add( theBtCheck );                           //  Add to canvas
+    theBtCheck.addActionListener(new ButtonSound("button_Sound.wav"));
 
     theBtBuy.setBounds( 16, 25+60*1, 80, 40 );      // Buy button 
     theBtBuy.addActionListener(                     // Call back code
