@@ -67,17 +67,19 @@ public class CashierView implements Observer
     theBtCheck.addActionListener(                   // Call back code
       e -> cont.doCheck( theInput.getText() ) );
     cp.add( theBtCheck );                           //  Add to canvas
-    theBtCheck.addActionListener(new ButtonSound("/CI553-CW/button_Sound.wav"));
+    theBtCheck.addActionListener(new ButtonSound("button_Sound.wav"));
 
     theBtBuy.setBounds( 16, 25+60*1, 80, 40 );      // Buy button 
     theBtBuy.addActionListener(                     // Call back code
       e -> cont.doBuy() );
     cp.add( theBtBuy );                             //  Add to canvas
+    theBtBuy.addActionListener(new ButtonSound("button_Sound.wav"));
 
     theBtBought.setBounds( 16, 25+60*3, 80, 40 );   // Clear Button
     theBtBought.addActionListener(                  // Call back code
       e -> cont.doBought() );
     cp.add( theBtBought );                          //  Add to canvas
+    theBtBought.addActionListener(new ButtonSound("button_Sound.wav"));
 
     theAction.setBounds( 110, 25 , 270, 20 );       // Message area
     theAction.setText( "" );                        // Blank
