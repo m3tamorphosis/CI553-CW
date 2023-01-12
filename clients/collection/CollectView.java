@@ -7,6 +7,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.Observable;
 import java.util.Observer;
+import clients.ButtonSound;
 
 /**
  * Implements the Customer view.
@@ -58,10 +59,11 @@ public class CollectView implements Observer
     theBtCollect.addActionListener(                 // Call back code
       e -> cont.doCollect( theInput.getText()) );
     cp.add( theBtCollect );                         //  Add to canvas
+    theBtCollect.addActionListener(new ButtonSound("button_Sound.wav"));
 
     theAction.setBounds( 110, 25 , 270, 20 );       // Message area
     theAction.setText( "" );                        // Blank
-    cp.add( theAction );                            //  Add to canvas
+    cp.add( theAction );                            //  Add to canvas    
 
     theInput.setBounds( 110, 50, 270, 40 );         // Input Area
     theInput.setText("");                           // Blank

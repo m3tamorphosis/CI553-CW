@@ -9,18 +9,18 @@ import java.io.File;
 
 public class ButtonSound implements ActionListener {
 	private String sound;
-	public ButtonSound(String sd) {
-		sound = sd;
+	public ButtonSound(String x) {
+		sound = x;
 	}
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {		
 		try {
 			File file = new File(sound);
-			AudioInputStream stream = AudioSystem.getAudioInputStream(file);
-			Clip c = AudioSystem.getClip();
-			c.open(stream);
-			c.start();
+			AudioInputStream AIStream = AudioSystem.getAudioInputStream(file);
+			Clip y = AudioSystem.getClip();
+			y.open(AIStream);
+			y.start();
 		} catch (Exception e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();

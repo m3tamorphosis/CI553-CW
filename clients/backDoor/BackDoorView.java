@@ -7,6 +7,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.Observable;
 import java.util.Observer;
+import clients.ButtonSound;
 
 /**
  * Implements the Customer view.
@@ -63,17 +64,20 @@ public class BackDoorView implements Observer
     theBtQuery.addActionListener(                   // Call back code
       e -> cont.doQuery( theInput.getText() ) );
     cp.add( theBtQuery );                           //  Add to canvas
+    theBtQuery.addActionListener(new ButtonSound("button_Sound.wav"));
 
     theBtRStock.setBounds( 16, 25+60*1, 80, 40 );   // Check Button
     theBtRStock.addActionListener(                  // Call back code
       e -> cont.doRStock( theInput.getText(),
                           theInputNo.getText() ) );
     cp.add( theBtRStock );                          //  Add to canvas
+    theBtRStock.addActionListener(new ButtonSound("button_Sound.wav"));
 
     theBtClear.setBounds( 16, 25+60*2, 80, 40 );    // Buy button 
     theBtClear.addActionListener(                   // Call back code
       e -> cont.doClear() );
     cp.add( theBtClear );                           //  Add to canvas
+    theBtClear.addActionListener(new ButtonSound("button_Sound.wav"));
 
  
     theAction.setBounds( 110, 25 , 270, 20 );       // Message area
