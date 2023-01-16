@@ -48,7 +48,8 @@ class Main
   {
     //DEBUG.set(true); /* Lots of debug info */
     MiddleFactory mlf = new LocalMiddleFactory();  // Direct access
- 
+    
+    startAdvertGUI();
     startCustomerGUI_MVC( mlf );
     if ( many ) 
      startCustomerGUI_MVC( mlf );
@@ -64,6 +65,15 @@ class Main
     startCollectionGUI_MVC( mlf );
   }
   
+  public void startAdvertGUI() {
+	  JFrame window = new JFrame();
+	  window.setTitle("Advert");
+	  window.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
+	  Dimension pos = PosOnScrn.getPos();
+	  
+	  window.setVisible(true); 
+	    
+  }
   public void startCustomerGUI_MVC(MiddleFactory mlf )
   {
     JFrame  window = new JFrame();
