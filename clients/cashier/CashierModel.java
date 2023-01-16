@@ -4,6 +4,7 @@ import catalogue.Basket;
 import catalogue.Product;
 import debug.DEBUG;
 import middle.*;
+import catalogue.Undo;
 
 import java.util.Observable;
 
@@ -50,6 +51,11 @@ public class CashierModel extends Observable
   public Basket getBasket()
   {
     return theBasket;
+  }
+  
+  public void doUndo()
+  {
+	  
   }
 
   /**
@@ -160,7 +166,7 @@ public class CashierModel extends Observable
   }
 
   /**
-   * ask for update of view callled at start of day
+   * ask for update of view called at start of day
    * or after system reset
    */
   public void askForUpdate()

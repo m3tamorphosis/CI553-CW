@@ -36,16 +36,16 @@ public class BetterBasket extends Basket implements Serializable
 	// TODO Auto-generated method stub
 	Collections.sort(this, new Comparator<Product>(){
 		@Override
-		public int compare(Product p1, Product p2) {
-            double repeat = p1.getPrice();
-            double p = p2.getPrice();            
-            if(repeat == p)
+		public int compare(Product p1, Product p2) { // compares product num of products
+            String repeat = p1.getProductNum();
+            String p = p2.getProductNum();           
+            if(repeat == p) // if product num equal
             {
-                p2.setQuantity(p2.getQuantity() + 1);
+                p2.setQuantity(p2.getQuantity() + 1); 
                 p1.setQuantity(0);
                 return 0;
             }            
-            if(repeat<p) {
+            if(p1.getPrice() <p2.getPrice()) {
             	return 1;
             }else {
             	return -1;

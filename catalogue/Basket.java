@@ -1,6 +1,7 @@
 package catalogue;
 
 import java.io.Serializable;
+import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Currency;
 import java.util.Formatter;
@@ -18,6 +19,8 @@ public class Basket extends ArrayList<Product> implements Serializable
 {
   private static final long serialVersionUID = 1;
   private int    theOrderNum = 0;          // Order number
+  
+  public ArrayDeque<Product> history = new ArrayDeque<>();
   
   /**
    * Constructor for a basket which is
@@ -57,8 +60,16 @@ public class Basket extends ArrayList<Product> implements Serializable
   // Will be in the Java doc for Basket
   @Override
   public boolean add( Product pr )
-  {                              
+  {             
+	history.add(pr);
     return super.add( pr );     // Call add in ArrayList
+  }
+  
+  
+  public boolean remove()
+  { 		
+	Product rmv = history.getLast();
+    return super.remove(rmv);     
   }
 
   /**
