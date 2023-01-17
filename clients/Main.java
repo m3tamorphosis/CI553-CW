@@ -22,6 +22,9 @@ import middle.MiddleFactory;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.concurrent.atomic.AtomicInteger;
 
 
 /**
@@ -65,15 +68,47 @@ class Main
     startCollectionGUI_MVC( mlf );
   }
   
+  
   public void startAdvertGUI() {
-	  JFrame window = new JFrame();
-	  window.setTitle("Advert");
-	  window.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
-	  Dimension pos = PosOnScrn.getPos();
-	  
-	  window.setVisible(true); 
-	    
-  }
+	    String[] images = {
+	          "camera_ad.jpg",
+	          "mp3_ad.jpg",
+	          "radio_ad.jpg",
+	          "tv_ad.jpg",
+	          "usb_ad.jpg",
+	          "watch_ad.jpg",
+	          "toaster_ad.jpg"
+	    };
+	    JFrame frame = new JFrame(); //JFrame Creation       
+	    frame.setTitle("Adverts"); //Add the title to frame
+	    frame.setLayout(null); //Terminates default flow layout
+	      
+	    frame.setBounds(50, 600, 600, 600); //Sets the position of the frame
+	      
+	    Container c = frame.getContentPane(); //Gets the content layer
+	    JLabel label = new JLabel(); //JLabel Creation
+	    label.setIcon(new ImageIcon("camera_ad.jpg")); //Sets the image to be displayed as an icon
+	    Dimension size = label.getPreferredSize(); //Gets the size of the image
+	    label.setBounds(25, 20, size.width, size.height); //Sets the location of the image
+
+	    c.add(label); //Adds objects to the container
+	    frame.setVisible(true); // Exhibit the frame
+
+	    AtomicInteger currentImage = new AtomicInteger(0); // can be accessed and manipulated from inner threads
+	    Timer timer = new Timer(5000, new ActionListener() {
+	        @Override
+	        public void actionPerformed(ActionEvent e) {
+	        	
+	            int currentImageIndex = currentImage.getAndIncrement() % images.length; //gets value of currentImage and increments by 1
+	            //modulus operator ensure the current image index stays within the range
+	            label.setIcon(new ImageIcon(images[currentImageIndex])); // accesses the images
+	            frame.repaint();
+	        }
+	    });
+	    timer.start();
+	}
+
+
   public void startCustomerGUI_MVC(MiddleFactory mlf )
   {
     JFrame  window = new JFrame();
