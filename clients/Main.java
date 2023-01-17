@@ -20,8 +20,15 @@ import clients.warehousePick.PickView;
 import middle.LocalMiddleFactory;
 import middle.MiddleFactory;
 
+import javax.print.attribute.standard.Media;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 import javax.swing.*;
 import java.awt.*;
+import java.io.File;
+import java.io.IOException;
+
 
 
 /**
@@ -48,7 +55,8 @@ class Main
   {
     //DEBUG.set(true); /* Lots of debug info */
     MiddleFactory mlf = new LocalMiddleFactory();  // Direct access
- 
+    
+    startBGM("bgm.wav");
     startCustomerGUI_MVC( mlf );
     if ( many ) 
      startCustomerGUI_MVC( mlf );
@@ -62,6 +70,20 @@ class Main
     if ( many ) 
       startDisplayGUI_MVC( mlf );
     startCollectionGUI_MVC( mlf );
+  }
+  
+  public void startBGM(String bgmFile)  {
+	  try {
+		  File file = new File(bgmFile);
+		  AudioInputStream audioIn = AudioSystem.getAudioInputStream(file);
+		  Clip c = AudioSystem.getClip();
+		  c.open(audioIn);
+		  c.loop(Clip.LOOP_CONTINUOUSLY);
+		  c.start();
+	  }catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
   }
   
   public void startCustomerGUI_MVC(MiddleFactory mlf )
